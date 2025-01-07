@@ -19,7 +19,7 @@ function Wishlist() {
 
   return (
     <section>
-      <h1 className='mt-[32px] ml-[7%] text-1xl text-primary font-bold md:ml-[5%]'>Wishlist Products:</h1>
+      <h1 className='mt-[32px] ml-[7%] text-1xl text-color3 font-bold md:ml-[5%]'>Wishlist Products:</h1>
       <div className='flex flex-wrap mt-[5%]'>
         {wishlistItems && wishlistItems.map((product)=>{
           return(

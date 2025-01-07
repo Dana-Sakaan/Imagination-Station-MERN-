@@ -81,8 +81,8 @@ function Search() {
 
   return (
     <section className="">
-      <div className=" border-b-2 border-b-primary">
-        <h2 className="mt-[32px] ml-[7%] text-1xl text-primary font-semibold md:ml-[5%]">
+      <div className=" border-b-2 border-b-color1">
+        <h2 className="mt-[32px] ml-[7%] text-1xl text-color3 font-semibold md:ml-[5%]">
           Search for products
         </h2>
 
@@ -105,7 +105,7 @@ function Search() {
             value={searchData.category}
             name="category"
             id="category"
-            className=" p-2 capitalize text-lg bg-primary rounded-lg w-[150px] text-text4"
+            className=" p-2 capitalize text-lg bg-color1 text-color2 rounded-lg w-[150px]"
           >
             <option value="" disabled selected hidden>
               Category
@@ -123,7 +123,7 @@ function Search() {
             value={searchData.brand}
             name="brand"
             id="brand"
-            className=" p-2  capitalize text-lg bg-primary rounded-lg w-[150px]  text-text4"
+            className=" p-2  capitalize text-lg  bg-color1 text-color2 rounded-lg w-[150px]"
           >
             <option value="" disabled selected hidden>
               brand
@@ -139,7 +139,7 @@ function Search() {
             value={searchData.age}
             name="age"
             id="age"
-            className=" p-2  capitalize text-lg bg-primary rounded-lg w-[150px]  text-text4"
+            className=" p-2  capitalize text-lg  bg-color1 text-color2 rounded-lg w-[150px]"
           >
             <option value="" disabled selected hidden>
               age
@@ -147,7 +147,7 @@ function Search() {
             {ageValues &&
               ageValues.map((age) => <option key={age} value={age}>{age}</option>)}
           </select>
-          <label className="text-xl text-primary">
+          <label className="text-xl text-color1 font-semibold">
             Offer:{" "}
             <input
               type="checkbox"
@@ -162,7 +162,7 @@ function Search() {
             value={searchData.sortBy}
             name="sortBy"
             id="sortBy"
-            className=" p-2 capitalize text-lg bg-primary rounded-lg  w-[150px]  text-text4"
+            className=" p-2 capitalize text-lg bg-color1 text-color2 rounded-lg  w-[190px]"
           >
             <option value="" disabled selected hidden>
               Sort:
@@ -171,7 +171,7 @@ function Search() {
             <option value="asc">price: low to high</option>
           </select>
 
-          <button className="p-2 text-lg bg-secondary rounded-lg w-[150px]">
+          <button className="p-2 text-lg bg-color3 text-color4 rounded-lg w-[150px]">
             Search
           </button>
         </form>
@@ -181,16 +181,16 @@ function Search() {
         <button
           type="button"
           disabled={searchData.page == 1}
-          className="text-primary"
+          className="text-color1"
           onClick={decreasePage}
         >
           <HiArrowSmallLeft />
         </button>
-        <p className="ml-3 mr-3 text-2xl">{searchData.page}</p>
+        <p className="ml-3 mr-3 text-2xl text-color3">{searchData.page}</p>
         <button
           type="button"
           disabled={searchData.page == pagesNumber}
-          className="text-primary"
+          className="text-color1"
           onClick={increasePage}
         >
           <HiArrowSmallRight />
@@ -235,16 +235,16 @@ function Search() {
         <button
           type="button"
           disabled={searchData.page == 1}
-          className="text-primary"
+          className="text-color1"
           onClick={decreasePage}
         >
           <HiArrowSmallLeft />
         </button>
-        <p className="ml-3 mr-3 text-2xl">{searchData.page}</p>
+        <p className="ml-3 mr-3 text-2xl text-color3">{searchData.page}</p>
         <button
           type="button"
           disabled={searchData.page == pagesNumber}
-          className="text-primary"
+          className="text-color1"
           onClick={increasePage}
         >
           <HiArrowSmallRight />

@@ -35,7 +35,7 @@ function Profile() {
         title: "Are you sure?",
         icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#0A7273",
         cancelButtonColor: "#d33",
         confirmButtonText: "Update",
       }).then((result) => {
@@ -68,7 +68,7 @@ function Profile() {
         title: "Are you sure?",
         icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#0A7273",
         cancelButtonColor: "#d33",
         confirmButtonText: "Sign Out",
       }).then((result) => {
@@ -97,7 +97,7 @@ function Profile() {
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#0A7273",
         cancelButtonColor: "#d33",
         confirmButtonText: "Delete it!",
       }).then((result) => {
@@ -123,29 +123,29 @@ function Profile() {
   };
 
   return (
-    <section className="bg-text4 text-primary">
+    <section className="text-color3">
       <button
         hidden={currentUser.role == "User"}
         className={`${
           currentUser.role !== "admin"
             ? "none"
-            : "w-fit bg-secondary  mb-2 mt-3 ml-[2%] text-lg p-1 rounded-md text-center text-black"
+            : "w-fit bg-color3  mb-2 mt-3 ml-[2%] text-lg p-1 rounded-md text-center text-color2"
         }`}
       >
         <Link to="/dashboard">Admin Dashboard</Link>
       </button>
       <h2 className="text-2xl font-bold pt-3 text-center">Profile Page</h2>
-      <p className="text-lg text-primary text-center">
+      <p className="text-lg text-center">
         Fill your information here
       </p>
-      <p className="p-1 text-center ss:text-end text-lg text-primary mr-10">
+      <p className="p-1 text-center ss:text-end text-lg text-color4 mr-10">
         Points: {currentUser.points}
       </p>
 
       <div className="ss:flex mt-[32px]">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col ss:w-[50%] ml-[7%] font-semibold  ss:border-r-2 border-b-2 ss:border-b-0 border-primary "
+          className="flex flex-col ss:w-[50%] ml-[7%] font-semibold  ss:border-r-2 border-b-2 ss:border-b-0 border-color1 "
         >
           <label className="ml-[2%] text-1xl mt-[8px] ">Name:</label>
           <input
@@ -199,7 +199,7 @@ function Profile() {
             type="button"
             disabled={loading}
             onClick={updateFormButton}
-            className="rounded-md mt-4 mb-3 place-self-center text-lg p-1 bg-secondary text-black w-fit"
+            className="rounded-md mt-4 mb-3 place-self-center text-lg p-1 bg-color3 text-color2  w-fit"
           >
             {updateButton ? "Cancel update" : "Add/update profile"}
           </button>
@@ -208,7 +208,7 @@ function Profile() {
             type="submit"
             disabled={loading}
             hidden={!updateButton}
-            className="w-fit bg-secondary mt-4 mb-4 text-lg p-1 rounded-md place-self-center text-black"
+            className="w-fit bg-color3 mt-4 mb-4 text-lg p-1 rounded-md place-self-center text-color2"
           >
             Submit
           </button>
@@ -217,8 +217,8 @@ function Profile() {
           )}
         </form>
 
-        <div className="border-b-2 border-b-primary ss:border-b-0 ss:ml-[24px] mt-[32px] ss:mt-0">
-          <h3 className="text-xl text-primary font-bold ml-[40px]">
+        <div className="border-b-2 border-b-color1 ss:border-b-0 ss:ml-[24px] mt-[32px] ss:mt-0">
+          <h3 className="text-xl font-bold ml-[40px]">
             Order History
           </h3>
 

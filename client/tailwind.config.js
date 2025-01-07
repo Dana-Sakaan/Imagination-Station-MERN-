@@ -7,14 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#37a5b8",   
-        secondary:"#fdfdf7", 
-        gradient1: "bg-gradient-to-bl from-blue-500 to-blue-800" ,          
-        text1: "#ffffff",
-        text2: "#333333",
-        text3: "#969c9e",    
-        text4: "#ECE7E2",
-        thirdColor: "#5F95E3"
+        color1: "#0A7273",   
+        color2:"#E9E3D5", 
+        color3: "#033043",
+        color4: "#FDA521",          
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

@@ -73,11 +73,11 @@ function UpdateProduct() {
          Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Delete it!"
+      confirmButtonText: "Update it!"
     }).then((result) => {
       if (result.isConfirmed) {
         setLoading(true);
@@ -87,8 +87,8 @@ function UpdateProduct() {
         { withCredentials: true }
       );
         Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
+          title: "updated!",
+          text: "Your file has been updated.",
           icon: "success"
         });
         navigate(`/product-details/${product._id}`)
@@ -103,11 +103,11 @@ function UpdateProduct() {
   return (
     <div className="ml-[5%] w-[90%] mt-[32px] mb-12">
       {loading && <p>Loading...</p>}
-      <h2 className="text-primary text-2xl font-semibold">Update Product:</h2>
+      <h2 className="text-color1 text-2xl font-semibold">Update Product:</h2>
       {!loading && !error && product && (
         <form className=" flex" onSubmit={handleSubmit}>
           <div className="flex flex-col text-lg">
-            <label htmlFor="" className="mb-1  mt-2  text-primary">
+            <label htmlFor="" className="mb-1  mt-2  text-color1">
               Product Name:
             </label>
             <input
@@ -119,7 +119,7 @@ function UpdateProduct() {
               className="rounded-md w-[100%] p-1"
             />
 
-            <label htmlFor="" className="mb-1 mt-2  text-primary">
+            <label htmlFor="" className="mb-1 mt-2  text-color3">
               Product Price:
             </label>
             <input
@@ -131,7 +131,7 @@ function UpdateProduct() {
               className="rounded-md w-[100%] p-1"
             />
 
-            <label className="mb-1  mt-2  text-primary">
+            <label className="mb-1  mt-2  text-color3">
               Quantity in stock:
             </label>
             <input
@@ -143,7 +143,7 @@ function UpdateProduct() {
               className="rounded-md w-[100%]  p-1"
             />
 
-            <label className="mb-1  mt-2  text-primary">Product brand:</label>
+            <label className="mb-1  mt-2  text-color3">Product brand:</label>
             <input
               defaultValue={product.brand}
               onChange={handleChange}
@@ -153,7 +153,7 @@ function UpdateProduct() {
               className=" mb-1 mt-2 p-1 rounded-md w-[100%] "
             />
 
-            <label className="mb-1  mt-2  text-primary">Category:</label>
+            <label className="mb-1  mt-2  text-color3">Category:</label>
             <input
               type="text"
               defaultValue={product.category}
@@ -163,7 +163,7 @@ function UpdateProduct() {
               onChange={handleChange}
             />
 
-            <label className="mb-1  mt-2  text-primary">Age:</label>
+            <label className="mb-1  mt-2  text-color3">Age:</label>
             <input
               type="text"
               defaultValue={product.age}
@@ -173,7 +173,7 @@ function UpdateProduct() {
               onChange={handleChange}
             />
 
-            <label className="mb-1 mt-2  text-primary">
+            <label className="mb-1 mt-2  text-color3">
               Offer:
               <input
                 checked={product.offer}
@@ -184,9 +184,9 @@ function UpdateProduct() {
               />
             </label>
 
-            <label className="mb-1  mt-2  text-primary">
+            <label className="mb-1  mt-2  text-color3">
               Discount Percent:
-              <span className="text-text3">(if there is a discount)</span>
+              <span>(if there is a discount)</span>
             </label>
             <input
               disabled={!product.offer}
@@ -197,7 +197,7 @@ function UpdateProduct() {
               className="rounded-md w-[100%] p-1"
             />
 
-            <label className="mb-1  mt-2  text-primary">
+            <label className="mb-1  mt-2  text-color3">
               Product Description:
             </label>
             <textarea
@@ -209,55 +209,20 @@ function UpdateProduct() {
             ></textarea>
 
             <button
-              type="submit"
-              className="bg-primary mt-4 rounded-md text-text4 p-1"
+              type="button"
+              className="bg-color3 mt-4 rounded-md text-color2 p-1"
               disabled={loading}
+              onClick={handleSubmit}
             >
               {loading ? "Loading..." : "Edit product"}
             </button>
             <button
             type="button"
-              className="mt-2 mb-2 ml-4 bg-red-700 p-2 text-text4 rounded-lg"
-              onClick={deleteProductButton}
+              className="mt-2 mb-2 ml-4 bg-red-700 p-2 text-color2 rounded-lg"
+              onClick={handleDeleteProduct}
             >
               Delete Product
             </button>
-          </div>
-
-          {/* confirmation box */}
-          <div
-            className={`${
-              deleteButton
-                ? "w-[100%] h-[100%] flex justify-center items-center  bg-text4 fixed inset-0 "
-                : "none"
-            } `}
-            onClick={deleteProductButton}
-          >
-            {deleteButton && (
-              <div className="bg-secondary w-[30%] h-[30%]  text-center  leading-relaxed text-lg text-text2">
-                <p className="text-xl">
-                  Are you sure you want to delete your account?
-                </p>
-                <p className="">
-                  You will lose your saved points, orders history, whislist and
-                  other offers
-                </p>
-                <div className="flex justify-around">
-                  <button
-                    onClick={deleteProductButton}
-                    className=" rounded-md p-1 bg-primary text-text4"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={handleDeleteProduct}
-                    className="rounded-md p-1 bg-primary text-red-700"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
         </form>
       )}

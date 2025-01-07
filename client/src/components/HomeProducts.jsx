@@ -29,8 +29,8 @@ function HomeProducts() {
   }, []);
 
   return (
-    <section className="mt-10 ml-[3%]">
-      <h2 className="text-2xl text-primary font-semibold mb-8">
+    <section className="mt-10 ml-[3%] border-t-2 border-color1">
+      <h2 className="text-2xl text-color3 font-semibold mb-8">
         Products on Sale:
       </h2>
       {loading && (

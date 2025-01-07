@@ -105,11 +105,11 @@ function AddProduct() {
 
   return (
     <div className="ml-[10%]">
-      <p className="text-2xl text-primary font-bold mb-3">Add new product</p>
+      <p className="text-2xl text-color3 font-bold mb-3">Add new product</p>
 
       <form className=" flex" onSubmit={handleSubmit}>
         <div className="flex flex-col text-lg">
-          <label htmlFor="" className="mb-1  mt-2  text-primary">
+          <label htmlFor="" className="mb-1  mt-2  text-color3">
             Product Name:
           </label>
           <input
@@ -121,7 +121,7 @@ function AddProduct() {
             className="rounded-md w-[100%] p-1"
           />
 
-          <label htmlFor="" className="mb-1 mt-2  text-primary">
+          <label htmlFor="" className="mb-1 mt-2  text-color3">
             Product Price:
           </label>
           <input
@@ -133,7 +133,7 @@ function AddProduct() {
             className="rounded-md w-[100%] p-1"
           />
 
-          <label className="mb-1  mt-2  text-primary">Quantity in stock:</label>
+          <label className="mb-1  mt-2  text-color3">Quantity in stock:</label>
           <input
             value={productData.quantityInStock}
             onChange={handleChange}
@@ -143,7 +143,7 @@ function AddProduct() {
             className="rounded-md w-[100%]  p-1"
           />
 
-          <label className="mb-1  mt-2  text-primary">Product brand:</label>
+          <label className="mb-1  mt-2  text-color3">Product brand:</label>
           <input
             value={productData.brand}
             onChange={handleChange}
@@ -153,7 +153,7 @@ function AddProduct() {
             className=" mb-1 mt-2 p-1 rounded-md w-[100%] "
           />
 
-          <label className="mb-1  mt-2  text-primary">Category:</label>
+          <label className="mb-1  mt-2  text-color3">Category:</label>
           <input
             type="text"
             value={productData.category}
@@ -163,7 +163,7 @@ function AddProduct() {
             onChange={handleChange}
           />
 
-          <label className="mb-1  mt-2  text-primary">Age:</label>
+          <label className="mb-1  mt-2  text-color3">Age:</label>
           <input
             type="text"
             value={productData.age}
@@ -173,7 +173,7 @@ function AddProduct() {
             onChange={handleChange}
           />
 
-          <label className="mb-1 mt-2  text-primary">
+          <label className="mb-1 mt-2  text-color3">
             Offer:
             <input
               checked={productData.offer}
@@ -184,9 +184,9 @@ function AddProduct() {
             />
           </label>
 
-          <label className="mb-1  mt-2  text-primary">
+          <label className="mb-1  mt-2  text-color3">
             Discount Percent:
-            <span className="text-text3">(if there is a discount)</span>
+            <span>(if there is a discount)</span>
           </label>
           <input
             disabled={!productData.offer}
@@ -197,7 +197,7 @@ function AddProduct() {
             className="rounded-md w-[100%] p-1"
           />
 
-          <label className="mb-1  mt-2  text-primary">
+          <label className="mb-1  mt-2  text-color3">
             Product Description:
           </label>
           <textarea
@@ -210,7 +210,7 @@ function AddProduct() {
 
           <button
             type="submit"
-            className="bg-primary mt-4 rounded-md text-text4 p-1"
+            className="bg-color3 mt-4 rounded-md text-color2 p-1"
             disabled={loading || uploadingStatus}
           >
             {loading ? "Loading..." : "Add product"}
@@ -220,8 +220,8 @@ function AddProduct() {
         </div>
 
         <div className="ml-[100px]">
-          <p className="text-primary text-xl mb-1">Product images(max 6)</p>
-          <p className="text-primary text-lg mb-1">
+          <p className="text-color3 text-xl mb-1">Product images(max 6)</p>
+          <p className="text-color3 text-lg mb-1">
             Note: Upload images before adding product
           </p>
           <input
@@ -235,7 +235,7 @@ function AddProduct() {
           <button
             disabled={loading || uploadingStatus}
             type="button"
-            className="bg-primary text-text4 rounded-md p-1 text-lg"
+            className="bg-color1 text-color2 rounded-md p-1 text-lg"
             onClick={handleImageUpload}
           >
             {uploadingStatus

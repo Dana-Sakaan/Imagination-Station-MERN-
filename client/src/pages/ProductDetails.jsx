@@ -67,19 +67,19 @@ function ProductDetails() {
           </div>
           <div className="sm:w-[50%] sm:ml-[5%] text-1xl mt-7">
             {product.offer && (
-              <p className="text-orange-600 text-2xl">
+              <p className="text-color4 text-2xl">
                 {product.discountPercent}% off
               </p>
             )}
             <h1 className="text-2xl">
-              <span className="text-primary mr-2">Name:</span>{" "}
+              <span className="text-color3 mr-2">Name:</span>{" "}
               {product.productName}
             </h1>
-            <h2 className="">
-              <span className="text-primary text-1xl mr-2">price:</span>
-              {product.productPrice}$
+            <h2 >
+              <span className="text-color3 text-1xl mr-2">price:</span>
+              <span className={product.offer? "line-through": ""}>{product.productPrice}$</span>
               {product.offer ? (
-                <span className="text-orange-600 text-1xl ml-2">
+                <span className="text-color4 text-1xl ml-2">
                   {product.productPrice * (1 - product.discountPercent / 100)}$
                 </span>
               ) : (
@@ -87,33 +87,33 @@ function ProductDetails() {
               )}
             </h2>
             <p className="">
-              <span className="text-primary text-1xl mr-2">Category:</span>{" "}
+              <span className="text-color3  text-1xl mr-2">Category:</span>{" "}
               {product.category}
             </p>
             <p className="">
-              <span className="text-primary text-1xl mr-2">Age:</span>{" "}
+              <span className="text-color3 text-1xl mr-2">Age:</span>{" "}
               {product.age}
             </p>
             <p className="">
-              <span className="text-primary text-1xl mr-2">Brand:</span>
+              <span className="text-color3 text-1xl mr-2">Brand:</span>
               {product.brand}
             </p>
             <button
-              className="mt-2 mb-2 bg-primary p-2 text-text4 rounded-lg transition-all duration-300 hover:scale-105"
+              className="mt-2 mb-2 bg-color3 p-2 text-color2 rounded-lg transition-all duration-300 hover:scale-105"
               disabled={(product.quantityInStock == 0)}
               onClick={addToCartHandler}
             >
               {(product.quantityInStock == 0 ? "Out Of Stock" : "Add To Cart")}
             </button>
 
-            <button className="mt-2 mb-2 ml-4 bg-primary p-2 text-text4 rounded-lg transition-all duration-300 hover:scale-105">
+            <button className="mt-2 mb-2 ml-4 bg-color1 p-2 text-color2 rounded-lg transition-all duration-300 hover:scale-105">
               <FaHeart />
             </button>
 
             {currentUser && currentUser.role == "admin" && (
               <div className="flex ">
                 <Link to={`/update-product/${product._id}`}>
-                <button className="mt-2 mb-2  bg-primary p-2 text-text4 rounded-lg"
+                <button className="mt-2 mb-2  bg-color3 p-2 text-color2 rounded-lg"
                 >Edit Product</button>
                 </Link>
                 
@@ -123,7 +123,7 @@ function ProductDetails() {
 
 
             <p className="text-gray-700">
-              <span className="block text-primary mr-2">Description:</span>
+              <span className="block text-color3 mr-2">Description:</span>
               {product.productDescription}
             </p>
           </div>

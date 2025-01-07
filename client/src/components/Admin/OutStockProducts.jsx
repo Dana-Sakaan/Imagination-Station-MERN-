@@ -26,6 +26,7 @@ function OutStockProducts() {
 
   return (
     <section>
+      <h3 className="text-color1 text-1xl font-bold ml-5 mb-6">Products Out Stock</h3>
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-700">{error}</p>}
 

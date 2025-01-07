@@ -61,11 +61,11 @@ function Orders() {
   return (
     <section>
       <form className="ml-[7%] mb-[3%] mt-[3%]" onSubmit={getOrders}>
-        <h3 className="text-1xl text-primary font-bold mb-5 ">Sort Orders:</h3>
+        <h3 className="text-1xl text-color3 font-bold mb-5 ">Sort Orders:</h3>
         <select
           onChange={handleSortChange}
           id="statusSort"
-          className=" p-2 capitalize text-lg bg-primary rounded-lg  w-[150px] mr-3 text-text4"
+          className=" p-2 capitalize text-lg bg-color1 rounded-lg  w-[150px] mr-3 text-color2"
         >
           <option value="" disabled selected hidden>
             Sort Orders:
@@ -78,7 +78,7 @@ function Orders() {
         <select
           onChange={handleSortChange}
           id="dateSort"
-          className=" p-2 capitalize text-lg bg-primary rounded-lg  w-[150px] mr-3 text-text4"
+          className=" p-2 capitalize text-lg bg-color1 rounded-lg  w-[150px] mr-3 text-color2"
         >
           <option value="" disabled selected hidden>
             Sort Dates:
@@ -89,26 +89,26 @@ function Orders() {
       </form>
 
       {loading ? <p className="text-xl">Loading...</p> : ""}
-      <div className=" ml-[15%] relative ">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <div className=" ml-[15%] ">
+        <table className="text-color2">
+          <thead className="bg-color1">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r-2 border-color2">
                 Product ID
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r-2 border-color2">
                 Customer
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r-2 border-color2">
                 Is Paid
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r-2 border-color2">
                 Is Delivered
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r-2 border-color2">
                 Order Status
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r-2 border-color2">
                 Details
               </th>
             </tr>
@@ -117,10 +117,10 @@ function Orders() {
             {/* create one tr with the map function */}
             {!error && orders
               ? orders.map((order) => (
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <tr className="bg-color3">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="px-6 py-4 font-medium"
                     >
                       #{order._id}
                     </th>
@@ -131,7 +131,7 @@ function Orders() {
                     <td className="px-6 py-4">
                       {order.isDelivered == false ? "False" : "True"}
                     </td>
-                    <td className="px-6 py-4">{order.orderStatus}</td>
+                    <td className={order.orderStatus== "Incompleted"? "text-color4 px-6 py-4": "px-6 py-4"}>{order.orderStatus}</td>
                     <td className="px-6 py-4 ">
                       <Link to={`/getOrder/${order._id}`}>
                         <FaEye />
@@ -142,7 +142,7 @@ function Orders() {
               : ""}
           </tbody>
         </table>
-        <button type="button" className="text-center text-primary text-xl mt-3" onClick={ChangeOrdersPage}>
+        <button type="button" className="text-center text-color3 text-xl mt-3" onClick={ChangeOrdersPage}>
           Show more
         </button>
       </div>

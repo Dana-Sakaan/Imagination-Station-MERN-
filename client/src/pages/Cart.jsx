@@ -43,7 +43,7 @@ function Cart() {
             text: "You won't be able to revert this!",
             icon: "question",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#0A7273",
             cancelButtonColor: "#d33",
             confirmButtonText: "Use points!"
           }).then((result) => {
@@ -71,7 +71,7 @@ function Cart() {
             title: "Place Order?",
             icon: "question",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#0A7273",
             cancelButtonColor: "#d33",
             confirmButtonText: "Place it!"
           }).then((result) => {
@@ -103,16 +103,16 @@ function Cart() {
 
   return (
     <section>
-      <h3 className="text-2xl text-primary font-bold mt-3 text-center">
+      <h3 className="text-2xl text-color3 font-bold mt-3 text-center">
         Shopping Cart
       </h3>
-      <h3 className="text-xl text-primary text-center mt-2">
+      <h3 className="text-xl text-color3 text-center mt-2">
         Order Information
       </h3>
       {/* user information */}
       <div className="ss:flex mt-[32px]">
-        <form className="flex flex-col ml-[7%] mr-[2%] mb-[24px] ss:w-[50%] font-semibold  ss:border-r-2 border-b-2 ss:border-b-0 border-primary ">
-          <label className="ml-[2%] text-1xl mt-[8px] text-primary">
+        <form className="flex flex-col ml-[7%] mr-[2%] mb-[24px] ss:w-[50%] font-semibold  ss:border-r-2 border-b-2 ss:border-b-0 border-color1 ">
+          <label className="ml-[2%] text-1xl mt-[8px] text-color3">
             Email:
           </label>
           <input
@@ -122,7 +122,7 @@ function Cart() {
             className="w-[92%] ml-[4%] rounded-md p-1 mt-[8px] lg:w-[80%]"
             onChange={handleChange}
           />
-          <label className="ml-[2%] text-1xl mt-[8px] text-primary">
+          <label className="ml-[2%] text-1xl mt-[8px] text-color3">
             Address:
           </label>
           <input
@@ -132,7 +132,7 @@ function Cart() {
             className="w-[92%] ml-[4%] rounded-md p-1 mt-[8px] lg:w-[80%]"
             onChange={handleChange}
           />
-          <label className="ml-[2%] text-1xl mt-[8px] text-primary">
+          <label className="ml-[2%] text-1xl mt-[8px] text-color3">
             Phone Number:
           </label>
           <input
@@ -144,10 +144,10 @@ function Cart() {
           />
           {currentUser && 
             <div>
-              <p className="ml-[2%] text-xl mt-[15px] text-primary">Use your collected points for discount</p>
-              <p className="ml-[3%] text-lg mt-[5px] text-primary">You have {currentUser && currentUser.points } points</p>
+              <p className="ml-[2%] text-xl mt-[15px] text-color3">Use your collected points for discount</p>
+              <p className="ml-[3%] text-lg mt-[5px] text-color3">You have {currentUser && currentUser.points } points</p>
               <button type="button" disabled={currentUser.points == 0}
-               className="w-[30%] sm:w-[25%] rounded-md p-1 text-lg font-semibold bg-primary text-text4 mt-3 ml-[3%] hover:scale-110 hover:transition-all"
+               className="w-[30%] sm:w-[25%] rounded-md p-1 text-lg font-semibold bg-color3 text-color2 mb-2 mt-3 ml-[3%] hover:scale-110 hover:transition-all cursor-pointer"
               onClick={handlePointsDiscount}>5 points = 1$</button>
             </div>
           }
@@ -156,7 +156,7 @@ function Cart() {
 
         {/* cart products */}
         <div>
-          <h3 className="text-1xl text-primary mt-2 ml-[7%]">
+          <h3 className="text-1xl text-color3 mt-2 ml-[7%]">
             Products in cart:
           </h3>
           {cartItems &&cartItems.length>0
@@ -170,34 +170,34 @@ function Cart() {
                       className="w-[88px]"
                     />
                     <div>
-                      <p className="text-lg font-semibold">
+                      <p className="text-lg font-semibold text-color3">
                         Price: {item.product.productPrice}$
                       </p>
 
-                      <p className="text-orange-600 text-lg ">
+                      <p className="text-color4 text-lg ">
                         New price: {item.product.productPrice * (1 - item.product.discountPercent / 100)}$
                       </p>
                       
                       <div className="flex">
-                      <p className="mr-1 text-lg">Quantity:</p>
-                        <button className="" onClick={()=>handleDecQty(item.product)}><FaCircleMinus className="text-primary text-lg"/></button>
+                      <p className="mr-1 text-lg text-color3">Quantity:</p>
+                        <button className="" onClick={()=>handleDecQty(item.product)}><FaCircleMinus className="text-color3 text-lg"/></button>
                         <p className="m-1 text-lg">{item.quantity}</p>
-                        <button onClick={()=>handleIncQty(item.product)}><FaCirclePlus className="text-primary text-lg"/></button>
+                        <button onClick={()=>handleIncQty(item.product)}><FaCirclePlus className="text-color3 text-lg"/></button>
                       </div>
-                      <p className="text-lg">Total: {(item.product.offer? item.product.productPrice * (1 - item.product.discountPercent / 100) : item.product.productPrice) * item.quantity}$</p>
+                      <p className="text-lg text-color3">Total: {(item.product.offer? item.product.productPrice * (1 - item.product.discountPercent / 100) : item.product.productPrice) * item.quantity}$</p>
                     </div>
                     <button className="text-red-700 ml-[10px]" onClick={()=>handleDeleteProduct(item.product)}>Remove</button>
                   </div>
                   
                 );
               })
-            : <p className="text-xl ">Your cart is empty</p>}
+            : <p className="text-xl text-color3">Your cart is empty</p>}
         </div>
       </div>
 
       {/* Order summary */}
-      <div className="ml-[7%] mt-[68px] text-primary">
-        <h3 className="text-1xl text-primary mt-2 font-bold">Order Summary:</h3>
+      <div className="ml-[7%] mt-[68px] text-color1">
+        <h3 className="text-1xl text-color3 mt-2 font-bold">Order Summary:</h3>
         <div className="ml-[10%]">
           <p className="text-xl font-semibold mb-1">Items Price: {productsTotalPrice}$ </p>
           <p className="text-xl font-semibold mb-1">Shipping Price: {shippingPrice} </p>
@@ -210,7 +210,7 @@ function Cart() {
       <div className="flex justify-center">
         <button
           type="submit"
-          className="w-[30%] sm:w-[15%] rounded-md p-1 text-lg font-semibold bg-primary text-text4 mt-3 hover:scale-110 hover:transition-all"
+          className="w-[30%] sm:w-[15%] rounded-md p-1 text-lg font-semibold bg-color3 text-color2 mt-3 hover:scale-110 hover:transition-all"
           onClick={handlePlaceOrder}
         >
           Place Order

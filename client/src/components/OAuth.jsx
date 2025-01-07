@@ -34,7 +34,7 @@ function OAuth() {
 
 
   return (
-    <button type="button" onClick={handleGoogleAuth} className="text-lg p-2 place-self-center mt-[15px] mb-[20px] text-text4 border-solid border-2 border-secondary">
+    <button type="button" onClick={handleGoogleAuth} className="text-lg p-2 place-self-center mt-[15px] mb-[20px] text-color2 border-solid border-2 border-color2">
       <FaGoogle className="inline mr-2 text-red-700"/> Continue with Google
     </button>
   )

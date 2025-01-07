@@ -3,19 +3,6 @@
 @tailwind utilities;
 
 
-.BWG{
-   background: linear-gradient(90deg, rgba(253,253,247,1) 25%, rgba(63,165,184,1) 66%);
-}
-
-.BOG{
-   background: linear-gradient(90deg, rgba(254,110,8,1) 29%, rgba(63,165,184,1) 62%);
-} 
-/* bg-[linear-gradient(90deg,_rgba(254,110,8,1)_29%,_rgba(63,165,184,1)_62%)] */
-
-.OWG{
-   background: linear-gradient(90deg, rgba(254,110,8,1) 35%, rgba(253,253,247,1) 68%);
-}
-
 body{
-   background-color: #ECE7E2;
+   background-color: #E9E3D5;
 }

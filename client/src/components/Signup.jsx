@@ -39,28 +39,28 @@ function Signup() {
   }
 
    return (
-      <div className=" w-[90%] ml-[5%] bg-primary flex flex-col  justify-center  sm:w-[45%] mt-[10%] sm:ml-[30%]  font-semibold rounded-sm">
+      <div className=" w-[90%] ml-[5%] bg-color1  flex flex-col  justify-center  sm:w-[45%] mt-[10%] sm:ml-[30%]  font-semibold rounded-sm">
         
   
         <form className="flex flex-col" onSubmit={handleSubmit}>
-          <h2 className="text-text4 place-self-center text-2xl mt-[15px] mb-[25px]">Sign up</h2>
+          <h2 className="text-color2 place-self-center text-2xl mt-[15px] mb-[25px]">Sign up</h2>
 
-          <label className="ml-[2%] text-1xl mt-[8px] text-text4">Name:</label>
+          <label className="ml-[2%] text-1xl mt-[8px] text-color2">Name:</label>
            <input type='text' required  id="name" onChange={handleChange}
             className="w-[92%] ml-[4%] rounded-md p-1 mt-[8px]"/>
 
-           <label className="ml-[2%] text-1xl mt-[8px] text-text4">Email:</label>
+           <label className="ml-[2%] text-1xl mt-[8px] text-color2">Email:</label>
            <input type='email' required id="email"  onChange={handleChange}
             className="w-[92%] ml-[4%] rounded-md p-1 mt-[8px]"/>
 
-           <label className="ml-[2%] text-1xl mt-[8px] text-text4">Password:</label>
+           <label className="ml-[2%] text-1xl mt-[8px] text-color2">Password:</label>
            <input type='password' required id="password" onChange={handleChange}
             className="w-[92%] ml-[4%] rounded-md p-1 mt-[8px]"/>
 
-            <p className="text-text3 mt-[5px] ml-[4%]">You have an account? <Link to='/signin' className="text-secondary underline">Sign in</Link></p> 
+            <p className="text-color2 mt-[5px] ml-[4%]">You have an account? <Link to='/signin' className="text-color4 underline">Sign in</Link></p> 
 
            <button disabled={loading} type="submit"
-              className="w-fit bg-secondary mt-[30px] text-lg pr-4 pl-4 pt-2 pb-2 rounded-md place-self-center text-text2">{loading ? "Loading..." : "Sign Up"}</button>
+              className="w-fit bg-color3 mt-[30px] text-lg pr-4 pl-4 pt-2 pb-2 rounded-md place-self-center text-color2">{loading ? "Loading..." : "Sign Up"}</button>
            <OAuth/>
            {error && <p className="text-red-700 place-self-center text-lg">{error}</p>}
         </form>
