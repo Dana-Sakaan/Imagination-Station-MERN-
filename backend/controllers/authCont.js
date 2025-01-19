@@ -1,6 +1,7 @@
 //sign up sign in sign out functions
 const validator = require("validator");
 const User = require("../models/UserModel.js");
+const Newsletter = require('../models/Newsletter.js')
 const jwt = require("jsonwebtoken");
 
 const signToken = (id) => {
@@ -108,4 +109,18 @@ const google = async (req, res) => {
   }
 };
 
-module.exports = { signUp, signIn, signOut, google };
+const subsribeNews = async (req,res)=>{
+  try {
+    const email = req.body.email
+    const emailCheck = await Newsletter.findOne({email})
+    if(emailCheck){
+      return res.status(201).json({message:"Email already exists"})
+    }
+    const newSubscriber = await Newsletter.create({email})
+    return res.status(200).json({message:"Subscribed Successfully"})
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+module.exports = { signUp, signIn, signOut, google,subsribeNews };
