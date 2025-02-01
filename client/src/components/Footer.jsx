@@ -41,8 +41,9 @@ function Footer() {
         <p className="text-1xl">Subscribe to our newsletter</p>
         <label className="text-xl gap-1">Email:</label>
         <input type="email" className="text-black" onChange={handleChange}/>
-        <button type="submit" className="block text-lg bg-color3 text-color4 p-1 rounded-md mt-2">Subscribe</button>
+        <button type="submit" disabled={loading} className="block text-lg bg-color3 text-color4 p-1 rounded-md mt-2">Subscribe</button>
         {message != '' && <p className="text-lg text-color4">{message}</p>}
+        {error != '' && <p className="text-lg text-red-700">{error}</p>}
       </form>
       <div className="flex mt-5 sm:mt-10 sm:mb-10">
         <div>

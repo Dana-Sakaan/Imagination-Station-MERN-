@@ -19,7 +19,15 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(cookieParser())
-
+//error handling middleware
+app.use((err,req,res,next)=>{
+   return res.status(err.status || 500).json({
+      error:{
+         status:err.status || 500,
+         message: err.message || 'Internal Server Error'
+      }
+   })
+})
 
 
 //routes

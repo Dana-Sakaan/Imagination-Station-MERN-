@@ -1,14 +1,10 @@
-//here will be edited when finishing the products and payment sections
-
-
-
 const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
 const User = require("../models/UserModel")
 
 
 
-const placeOrder = async (req, res )=>{
+const placeOrder = async (req, res, next )=>{
    try {
       const {customerData, cartItems,orderTotal,productsTotalPrice ,shippingPrice,discountTotal } =req.body
       console.log(customerData.email) 
@@ -64,11 +60,11 @@ const placeOrder = async (req, res )=>{
          return res.status(200).json({success:true, message: "Order created" , order})
       }
    } catch (error) {
-      console.log(error)
+      next(error)
    }
 }
 
-const getOrders = async (req,res)=>{
+const getOrders = async (req,res, next)=>{
    try {
       const sortOrders = req.query;
       let page = parseInt(sortOrders.page)
@@ -84,21 +80,21 @@ const getOrders = async (req,res)=>{
 
       return res.status(200).json({orders, success:true, message:"customer orders"})
    } catch (error) {
-      console.log(error)
+      next(error)
    }
 }
 
-const getOrder = async (req,res)=>{
+const getOrder = async (req,res, next)=>{
    try {
       const {id} = req.params
       const order = await Order.findById(id)
       return res.status(200).json({order, success:true, message:"customer orders"})
    } catch (error) {
-      console.log(error)
+      next(error)
    }
 }
 
-const orderStatus = async (req,res)=>{
+const orderStatus = async (req,res, next)=>{
    try {
       const {paymentStatus, deliveryStatus, completionStatus} = req.body
       console.log(paymentStatus)
@@ -107,11 +103,11 @@ const orderStatus = async (req,res)=>{
       const order = await Order.findByIdAndUpdate(req.params.id, {isPaid:Boolean(paymentStatus), isDelivered: Boolean(deliveryStatus), orderStatus: completionStatus}, {new: true});
       res.status(200).json({success:true, message: "Order is completed"})
    } catch (error) {
-      
+      next(error)
    }
 }
 
-const cancelOrder = async (req,res)=>{
+const cancelOrder = async (req,res, next)=>{
    
    try {
       const id = req.params.id;
@@ -121,7 +117,7 @@ const cancelOrder = async (req,res)=>{
 
       res.status(200).json({success:true, message: "Order is Canceled"})
    } catch (error) {
-      console.log(error)
+      next(error)
    }
 }
 

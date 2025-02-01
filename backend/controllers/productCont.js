@@ -2,7 +2,7 @@ const Product = require("../models/productModel");
 
 
 //create Product
-const createProduct = async (req, res) => {
+const createProduct = async (req, res, next) => {
   const { productName } = req.body;
   try {
     const product = await Product.findOne({ productName });
@@ -20,11 +20,11 @@ const createProduct = async (req, res) => {
         newProduct,
       });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-const updateProduct = async (req, res) => {
+const updateProduct = async (req, res, next) => {
   const id = req.params.id;
   try {
     const product = await Product.findByIdAndUpdate(id, req.body, {
@@ -40,45 +40,42 @@ const updateProduct = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Product updated", product });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-const deleteProduct = async (req, res) => {
+const deleteProduct = async (req, res,next) => {
   const id = req.params.id;
   try {
     const product = await Product.findByIdAndDelete(id);
-    // if(!product){
-    //    return res.status(404).json({success:false, message:"Product does not exist"})
-    // }
 
     res.status(200).json({ success: true, message: "Product deleted" });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-const productsWithOffer = async (req, res) => {
+const productsWithOffer = async (req, res, next) => {
   try {
     const offeredProducts = await Product.find({ offer: true });
     res
       .status(200)
       .json({ success: true, offeredProducts, message: "products with offer" });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-const productsOutOfStock = async (req, res) => {
+const productsOutOfStock = async (req, res, next) => {
   try {
     const outStock = await Product.find({ quantityInStock: 0 });
     res.status(200).json({ success: true, outStock });
   } catch (error) {
-    console.l
+    next(error)
   }
 };
 
-const getProduct = async (req, res) => {
+const getProduct = async (req, res, next) => {
   const id = req.params.id;
   try {
     const product = await Product.findById(id);
@@ -89,11 +86,11 @@ const getProduct = async (req, res) => {
     }
     res.status(200).json({ success: true, message: "Product", product });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-  const getProductss = async (req,res) => {
+  const getProductss = async (req,res, next) => {
     try {
       const categoryValues = await Product.distinct("category");
       const brandValues = await Product.distinct("brand");
@@ -147,7 +144,7 @@ const getProduct = async (req, res) => {
     res.status(200).json({success:true, searchedProducts, pages,categoryValues,brandValues,ageValues});
     
     } catch (error) {
-      console.log(error)
+      next(error)
     }
   };
 

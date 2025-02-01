@@ -11,7 +11,7 @@ const signToken = (id) => {
 };
 const maxAge = 86400000;
 
-const signUp = async (req, res) => {
+const signUp = async (req, res, next) => {
   const { name, password, email } = req.body;
 
   try {
@@ -40,11 +40,11 @@ const signUp = async (req, res) => {
       .status(200)
       .json({ success: true, message: "User Created", newUser });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-const signIn = async (req, res) => {
+const signIn = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
@@ -64,20 +64,20 @@ const signIn = async (req, res) => {
       .status(200)
       .json({ success: true, message: "User logged in", validUser });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-const signOut = async (req, res) => {
+const signOut = async (req, res, next) => {
   try {
     res.clearCookie("jwtAccess");
     res.json({ success: true, message: "Logged Out successfully" });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-const google = async (req, res) => {
+const google = async (req, res, next) => {
   const { name, email } = req.body;
   try {
     const user = await User.findOne(email);
@@ -105,11 +105,11 @@ const google = async (req, res) => {
         .json({ success: true, message: "User Created", user });
     }
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-const subsribeNews = async (req,res)=>{
+const subsribeNews = async (req,res, next)=>{
   try {
     const email = req.body.email
     const emailCheck = await Newsletter.findOne({email})
@@ -119,7 +119,7 @@ const subsribeNews = async (req,res)=>{
     const newSubscriber = await Newsletter.create({email})
     return res.status(200).json({message:"Subscribed Successfully"})
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 }
 

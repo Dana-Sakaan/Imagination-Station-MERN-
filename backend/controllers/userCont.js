@@ -1,7 +1,7 @@
 const User = require('../models/UserModel.js')
 const Message = require('../models/messageModel.js')
 
-const getProfile = async (req,res)=>{
+const getProfile = async (req,res, next)=>{
 
    try {
       //  console.log(req.user._id)
@@ -16,11 +16,11 @@ const getProfile = async (req,res)=>{
       }
       res.status(200).json({success: true, message: "your Account", user})
    } catch (error) {
-      console.log(error)
+     next(error)
    }
 }
 
-const updateProfile = async (req,res)=>{
+const updateProfile = async (req,res,next)=>{
    try {
       if (req.user._id != req.params.id){
          return res.status(403).json({success: false, message: "your not the owner of this profile"})
@@ -32,11 +32,11 @@ const updateProfile = async (req,res)=>{
       }
       res.status(200).json({success: true, message: "profile updated successfully", user})
    } catch (error) {
-      console.log(error)
+      next(error)
    }
 }
 
-const deleteProfile = async (req,res)=>{
+const deleteProfile = async (req,res, next)=>{
    try {
       if (req.user._id != req.params.id){
          return res.status(403).json({success: false, message: "your not the owner of this profile"})
@@ -44,11 +44,11 @@ const deleteProfile = async (req,res)=>{
       const user = await User.findByIdAndDelete(req.params.id); 
       res.status(200).json({success: true, message: "account deleted successfully"})
    } catch (error) {
-      console.log(error)
+     next(error)
    }
 }
 
-const addToWishlist = async (req, res)=>{
+const addToWishlist = async (req, res, next)=>{
    try {
       const user = req.user
       const productID = req.params.id
@@ -69,7 +69,7 @@ const addToWishlist = async (req, res)=>{
    }
 }
 
-const pointsDiscount = async (req,res)=>{
+const pointsDiscount = async (req,res,next)=>{
    try {
       const id = req.params.id
       const user = await User.findById(id)
@@ -82,17 +82,17 @@ const pointsDiscount = async (req,res)=>{
       console.log(2)
       res.status(200).json({success:true, message:"discount applied"})
    } catch (error) {
-      console.log(error)
+      next(error)
    }
 }
 
-const userMessage = async (req,res)=>{
+const userMessage = async (req,res,next)=>{
 
    try {
       const message = await Message.create(req.body)
       res.status(201).json({success:true, message: 'Our team will reach you soon'})
    } catch (error) {
-      console.log(error)
+      next(error)
    }
 }
 

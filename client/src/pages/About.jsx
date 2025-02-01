@@ -10,6 +10,7 @@ import axios from 'axios'
 function About() {
   const [contactData, setContactData] = useState({firstName: "",  lastName: '', email: '', message: ''})
   const [message, setMessage] = useState('')
+  const [error,setError] = useState(false)
 
 
   const handleChange = (e)=>{
@@ -42,7 +43,7 @@ function About() {
         }
       });
     } catch (error) {
-      console.log(error.data);
+     setError(error);
     }
   };
 
@@ -88,6 +89,7 @@ function About() {
             <textarea id="message" placeholder='Message' onChange={handleChange} className='border-2 rounded-lg p-2 border-gray-500 mb-2 w-[94%]'></textarea>
             <button className='bg-color3 w-fit text-lg mb-3 text-center items-center text-color4 p-2 rounded-md'>Submit</button>
             {message&& <p className='text-xl'>{message}</p>}
+            {error&& <p className='text-xl text-red-700'>{error}</p>}
           </form>
           
           </div>

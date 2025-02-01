@@ -14,6 +14,7 @@ function Cart() {
   const [discountTotal, setDiscountTotal] = useState(orderTotal)
   const dispatch = useDispatch()
   const [qty , setQty] = useState(0) //will help to rerender the cart component only
+  const [error , setError] = useState(false)
   
 
   const handleChange = (e) => {
@@ -77,7 +78,6 @@ function Cart() {
           }).then((result) => {
             if (result.isConfirmed) {
               const res = axios.post("http://localhost:8000/api/order/placeorder", orderData)
-              console.log("order placed")
               localStorage.removeItem('cart')
               setQty(qty -1)
               Swal.fire({
@@ -88,7 +88,7 @@ function Cart() {
             }
           });
      } catch (error) {
-       console.log(error)
+       setError(error)
      }
   }
 
@@ -215,6 +215,7 @@ function Cart() {
         >
           Place Order
         </button>
+        {error&& <p className='text-xl text-red-700'>{error}</p>}
       </div>
     </section>
   );

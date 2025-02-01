@@ -13,7 +13,6 @@ import Swal from "sweetalert2";
 
 function Profile() {
   const [updateButton, setUpdateButton] = useState(false);
-  const [deleteButton, setDeleteButton] = useState(false);
   const [userData, setUserData] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
