@@ -1,4 +1,5 @@
 const User = require('../models/UserModel.js')
+const Message = require('../models/messageModel.js')
 
 const getProfile = async (req,res)=>{
 
@@ -85,4 +86,14 @@ const pointsDiscount = async (req,res)=>{
    }
 }
 
-module.exports = {getProfile , updateProfile, deleteProfile,addToWishlist, pointsDiscount}
+const userMessage = async (req,res)=>{
+
+   try {
+      const message = await Message.create(req.body)
+      res.status(201).json({success:true, message: 'Our team will reach you soon'})
+   } catch (error) {
+      console.log(error)
+   }
+}
+
+module.exports = {getProfile , updateProfile, userMessage, deleteProfile,addToWishlist, pointsDiscount}
