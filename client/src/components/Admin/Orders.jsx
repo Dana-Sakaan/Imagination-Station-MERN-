@@ -7,7 +7,6 @@ function Orders() {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [showMore, setShowMore] = useState(false);
   const [sortingOrders, setSortingOrders] = useState({
     statusSort: "Incompleted",
     dateSort: "latest",

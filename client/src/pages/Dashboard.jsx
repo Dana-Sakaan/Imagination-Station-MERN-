@@ -9,7 +9,7 @@ function Dashboard() {
          <NavLink to='addproduct' className="block p-1 hover:text-color4">Add Product</NavLink>
          <NavLink to='orders' className="block p-1 hover:text-color4">Orders Management</NavLink>
          <NavLink to='out-of-stock' className="block p-1 hover:text-color4">Products Management</NavLink>
-         <NavLink className="block p-1 hover:text-color4">Statistics</NavLink>
+         <NavLink to='messages' className="block p-1 hover:text-color4">Messages</NavLink>
 
       </nav>
       </div>

@@ -18,6 +18,11 @@ const messageSchema = new Schema({
       type: String,
       required: true
    },
+   status:{
+      type:String,
+      enum: ['Answered', 'Not Answered'],
+      default:'Not Answered'
+   }
 },{timestamps: true})
 
 const Message = mongoose.model('Message',messageSchema)

@@ -96,4 +96,26 @@ const userMessage = async (req,res,next)=>{
    }
 }
 
-module.exports = {getProfile , updateProfile, userMessage, deleteProfile,addToWishlist, pointsDiscount}
+const getMessages = async (req,res,next)=>{
+   try {
+      const sorting = req.query
+      const page = parseInt(sorting.page) || 1
+      const skip = (page-1) * 10
+      const messages = await Message.find({status:sorting.status}).skip(skip).limit(10)
+      return res.status(200).json({success:true, message:"Users messages", messages})
+   } catch (error) {
+      next(error)
+   }
+}
+
+const messageStatus = async (req,res,next)=>{
+   try {
+      const {status} = req.body
+      const message = await Message.findByIdAndUpdate(req.params.id , {status}, {new:true})
+      return res.status(200).json({success:true, message:"Message is answered"})
+   } catch (error) {
+      next(error)
+   }
+}
+
+module.exports = {getProfile , updateProfile, userMessage, messageStatus,getMessages,deleteProfile,addToWishlist, pointsDiscount}

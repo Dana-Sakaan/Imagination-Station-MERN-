@@ -20,6 +20,7 @@ import Footer from "./components/Footer"
 import UpdateProduct from "./components/Admin/UpdateProduct"
 import OutStockProducts from "./components/Admin/OutStockProducts"
 import OrderDetails from "./components/Admin/orderDetails"
+import UserMessages from "./components/Admin/UserMessages"
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
               <Route path="addproduct" element={<AddProduct/>}/>
               <Route path="orders" element={<Orders/>}/>
               <Route path="out-of-stock" element={<OutStockProducts/>}/>
+              <Route path="messages" element={<UserMessages/>}/>
               
             </Route>
             <Route path="/getOrder/:id" element={<OrderDetails/>} />
