@@ -14,7 +14,7 @@ connectDB();
 
 //middlewares
 app.use(cors({
-   origin: 'http://localhost:5173', 
+   origin: 'https://imagination-station-itbh.onrender.com', 
    credentials: true
 }))
 app.use(express.json())
