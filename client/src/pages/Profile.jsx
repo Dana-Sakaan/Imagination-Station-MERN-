@@ -41,7 +41,7 @@ function Profile() {
         if (result.isConfirmed) {
           dispatch(actionStart());
           const res = axios.patch(
-        `http://localhost:8000/api/user/updateprofile/${currentUser._id}`,
+        `https://imagination-station-be.onrender.com/api/user/updateprofile/${currentUser._id}`,
         userData,
         { withCredentials: true }
       );
@@ -73,7 +73,7 @@ function Profile() {
       }).then((result) => {
         if (result.isConfirmed) {
           dispatch(actionStart());
-          const res = axios.get("http://localhost:8000/api/auth/signout");
+          const res = axios.get("https://imagination-station-be.onrender.com/api/auth/signout");
           Swal.fire({
             title: "signed out!",
             text: "You signed out successfully",
@@ -103,7 +103,7 @@ function Profile() {
         if (result.isConfirmed) {
           dispatch(actionStart());
           const res = axios.delete(
-            `http://localhost:8000/api/user/deleteprofile/${currentUser._id}`,
+            `https://imagination-station-be.onrender.com/api/user/deleteprofile/${currentUser._id}`,
             { withCredentials: true }
           );
           Swal.fire({

@@ -17,7 +17,7 @@ function UserMessages() {
    const getMessages = async () => {
      try {
        const res = await axios.get(
-         `http://localhost:8000/api/user/getmessages?${filteringData}`,
+         `https://imagination-station-be.onrender.com/api/user/getmessages?${filteringData}`,
          { withCredentials: true }
        );
        setMessages(res.data.messages)
@@ -42,7 +42,7 @@ function UserMessages() {
       })
 
       if(result.isConfirmed){
-        const res = await axios.put(`http://localhost:8000/api/user/messagestatus/${id}`, {status: "Answered"}, {withCredentials:true})
+        const res = await axios.put(`https://imagination-station-be.onrender.com/api/user/messagestatus/${id}`, {status: "Answered"}, {withCredentials:true})
         await Swal.fire({
                 title: "Answered!",
                 icon: "success"

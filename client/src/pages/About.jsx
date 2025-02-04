@@ -30,7 +30,7 @@ function About() {
       }).then((result) => {
         if (result.isConfirmed) {
           const res = axios.post(
-        `http://localhost:8000/api/user/message`,
+        `https://imagination-station-be.onrender.com/api/user/message`,
         contactData
       ).then((res)=>{
         setMessage(res.data.message)

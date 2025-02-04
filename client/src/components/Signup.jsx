@@ -23,7 +23,7 @@ function Signup() {
      try {
        dispatch(actionStart())
        console.log('line 1')
-       const res = await axios.post("http://localhost:8000/api/auth/signup", formData, {withCredentials:true})
+       const res = await axios.post("https://imagination-station-be.onrender.com/api/auth/signup", formData, {withCredentials:true})
         console.log("line 3")
        
         dispatch(actionSuccess(res.data.newUser))

@@ -19,7 +19,7 @@ function Footer() {
     e.preventDefault()
     try {
       setLoading(true)
-      const res = await axios.post('http://localhost:8000/api/auth/newsletter', {email: email})
+      const res = await axios.post('https://imagination-station-be.onrender.com/api/auth/newsletter', {email: email})
       console.log(res
       )
       setMessage(res.data.message)

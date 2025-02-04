@@ -30,7 +30,7 @@ function Search() {
   const getProducts = async ()=>{
     try {
       setLoading(true)
-      const res = await axios.get(`http://localhost:8000/api/product/getproducts?${searchParams}`)
+      const res = await axios.get(`https://imagination-station-be.onrender.com/api/product/getproducts?${searchParams}`)
       setSearchedProducts(res.data.searchedProducts)
       setCategoryValues(res.data.categoryValues)
       setbrandValues(res.data.brandValues)

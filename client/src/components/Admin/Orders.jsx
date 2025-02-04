@@ -20,7 +20,7 @@ function Orders() {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:8000/api/order/getorders?${filteringData}`,
+        `https://imagination-station-be.onrender.com/api/order/getorders?${filteringData}`,
         {
           withCredentials: true,
         }
@@ -47,7 +47,7 @@ function Orders() {
   // const handleSortSubmit = async (e)=>{
   //    e.preventDefault()
   //    try {
-  //      const res = await axios.get(`http://localhost:8000/api/order/sortorders?${sortingOrders}`)
+  //      const res = await axios.get(`https://imagination-station-be.onrender.com/api/order/sortorders?${sortingOrders}`)
   //    } catch (error) {
 
   //    }

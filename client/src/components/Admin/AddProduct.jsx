@@ -46,7 +46,7 @@ function AddProduct() {
       }
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/api/product/createproduct",
+        "https://imagination-station-be.onrender.com/api/product/createproduct",
         productData,
         { withCredentials: true }
       );

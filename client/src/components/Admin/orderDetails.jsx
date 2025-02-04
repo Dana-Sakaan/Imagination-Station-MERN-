@@ -18,7 +18,7 @@ function OrderDetails() {
     try {
       const id = params.id;
       const res = await axios.get(
-        `http://localhost:8000/api/order/getorder/${id}`,
+        `https://imagination-station-be.onrender.com/api/order/getorder/${id}`,
         { withCredentials: true }
       );
       setOrder(res.data.order);
@@ -52,7 +52,7 @@ function OrderDetails() {
             confirmButtonText: "Delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              const res =  axios.put(`http://localhost:8000/api/order/updateorder/${order._id}`, orderStatus,{withCredentials: true})
+              const res =  axios.put(`https://imagination-station-be.onrender.com/api/order/updateorder/${order._id}`, orderStatus,{withCredentials: true})
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -81,7 +81,7 @@ function OrderDetails() {
             confirmButtonText: "Cancel Order"
           }).then((result) => {
             if (result.isConfirmed) {
-                const res = axios.put(`http://localhost:8000/api/order/cancelorder/${order._id}`, {status:"Canceled"} , {withCredentials: true})
+                const res = axios.put(`https://imagination-station-be.onrender.com/api/order/cancelorder/${order._id}`, {status:"Canceled"} , {withCredentials: true})
               Swal.fire({
                 title: "Order Canceled!",
                 text: "Your file has been deleted.",

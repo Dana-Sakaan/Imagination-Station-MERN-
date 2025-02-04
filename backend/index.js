@@ -7,7 +7,6 @@ const userRoutes = require("./routes/userRoute")
 const orderRoutes = require("./routes/orderRoute")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
-const path = require('path')
 
 //config
 const app = express()
@@ -36,12 +35,6 @@ app.use("/api/auth",authRoutes )
 app.use("/api/product", productRoutes )
 app.use("/api/user", userRoutes )
 app.use("/api/order", orderRoutes)
-
-app.use(express.static(path.join(__dirname, '/client/dist')));
-
-app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
- })
 
 //config
 app.listen(process.env.PORT , ()=>{

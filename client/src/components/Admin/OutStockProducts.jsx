@@ -11,7 +11,7 @@ function OutStockProducts() {
     const getProducts = async () => {
       try {
          setLoading(true)
-        const res = await axios.get("http://localhost:8000/api/product/out-of-stock", {withCredentials:true});
+        const res = await axios.get("https://imagination-station-be.onrender.com/api/product/out-of-stock", {withCredentials:true});
         console.log(res.data.outStock)
         setProducts(res.data.outStock);
         setLoading(false)

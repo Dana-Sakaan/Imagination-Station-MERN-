@@ -16,7 +16,7 @@ function HomeProducts() {
     const getOfferedProducts = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:8000/api/product/offer");
+        const res = await axios.get("https://imagination-station-be.onrender.com/api/product/offer");
         setProductOffers(res.data.offeredProducts);
         setLoading(false);
         console.log(res);

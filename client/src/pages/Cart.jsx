@@ -49,7 +49,7 @@ function Cart() {
             confirmButtonText: "Use points!"
           }).then((result) => {
             if (result.isConfirmed) {
-              const res = axios.put(`http://localhost:8000/api/user/pointsdiscount/${currentUser._id}`, {},{withCredentials: true})
+              const res = axios.put(`https://imagination-station-be.onrender.com/api/user/pointsdiscount/${currentUser._id}`, {},{withCredentials: true})
               setDiscountTotal(prev => prev-1);
               console.log(discountTotal)
               Swal.fire({
@@ -77,7 +77,7 @@ function Cart() {
             confirmButtonText: "Place it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              const res = axios.post("http://localhost:8000/api/order/placeorder", orderData)
+              const res = axios.post("https://imagination-station-be.onrender.com/api/order/placeorder", orderData)
               localStorage.removeItem('cart')
               setQty(qty -1)
               Swal.fire({

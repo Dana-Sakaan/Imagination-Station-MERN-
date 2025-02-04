@@ -36,7 +36,7 @@ function UpdateProduct() {
             confirmButtonText: "Delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              const res = axios.delete(`http://localhost:8000/api/product/deleteproduct/${product._id}` , {withCredentials: true})
+              const res = axios.delete(`https://imagination-station-be.onrender.com/api/product/deleteproduct/${product._id}` , {withCredentials: true})
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -54,7 +54,7 @@ function UpdateProduct() {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:8000/api/product/products/${params.productId}`
+        `https://imagination-station-be.onrender.com/api/product/products/${params.productId}`
       );
       setproduct(res.data.product);
       setLoading(false);
@@ -82,7 +82,7 @@ function UpdateProduct() {
       if (result.isConfirmed) {
         setLoading(true);
       const res = axios.patch(
-        `http://localhost:8000/api/product/updateproduct/${product._id}`,
+        `https://imagination-station-be.onrender.com/api/product/updateproduct/${product._id}`,
         editedProduct,
         { withCredentials: true }
       );

@@ -24,7 +24,7 @@ function ProductDetails() {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:8000/api/product/products/${params.productId}`
+        `https://imagination-station-be.onrender.com/api/product/products/${params.productId}`
       );
       setproduct(res.data.product);
       setLoading(false);
