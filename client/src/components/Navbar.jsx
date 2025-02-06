@@ -44,10 +44,10 @@ function Navbar() {
           <Link to="/profile">
             <FaUser className="hover:text-color4"/>
           </Link>
-          <button onClick={toggleNav} className="xs:hidden"><CiMenuBurger/></button>{/*mobile button*/}
+          <button onClick={toggleNav} className="xs:hidden"><CiMenuBurger className="hover:text-color4"/></button>{/*mobile button*/}
 
           {/*below the mobile nav */}
-          <div hidden={isOpen== false} className="flex flex-col flex-wrap text-xl xs:hidden">
+          <div className={`${!isOpen? "none" : "flex flex-col flex-wrap text-xl xs:hidden"}`}>
         <Link to="/" className="block hover:text-color4">
           Home
         </Link>
@@ -66,8 +66,9 @@ function Navbar() {
         </div>
       </div>
       <hr />
+
       {/* Buttom navbar */}
-      <div className="xs:flex xs:justify-around xs:gap-3 xs:p-6 xs:pt-0 xs:pb-2 xs:text-xl ss:text-1xl">
+      <div className="hidden xs:flex xs:justify-around xs:gap-3 xs:p-6 xs:pt-0 xs:pb-2 xs:text-xl ss:text-1xl">
         <Link to="/" className="hover:text-color4">
           Home
         </Link>
