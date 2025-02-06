@@ -2,9 +2,18 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../images/logo.jpeg";
 import { FaShoppingCart, FaUser, FaHeart, FaSearch } from "react-icons/fa";
 import { CiMenuBurger } from "react-icons/ci";
+import { useState } from "react";
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleNav = ()=>{
+    setIsOpen(!isOpen)
+  }
+
+
   return (
+    <div>
     <nav className="bg-color1 text-color2 w-[100%]">
       {/* top navbar */}
       <div className="flex justify-between p-4 xs:p-8 xs:pb-3 xs:pt-5 ss:justify-around">
@@ -14,7 +23,7 @@ function Navbar() {
             <p className="text-color2 mt-3 ml-2 text-lg">Imagination Station</p>
           </Link>
         </div>
-        <div className="flex justify-center w-[50%] gap-1">
+        <div className="hidden ss:flex ss:justify-center ss:w-[50%] ss:gap-1">
           <input
             className=" w-[70%] text-black rounded-lg p-1"
             type="text"
@@ -25,7 +34,7 @@ function Navbar() {
           </button>
         </div>
         <div className=" flex gap-3 text-xl pt-2 xs:pt-3 xs:text-1xl xs:gap-5 md:text-2xl">
-          <button className="xs:hidden"><CiMenuBurger/></button> 
+          
           <Link to="/cart">
             <FaShoppingCart className="hover:text-color4"/>
           </Link>
@@ -35,12 +44,30 @@ function Navbar() {
           <Link to="/profile">
             <FaUser className="hover:text-color4"/>
           </Link>
+          <button onClick={toggleNav} className="xs:hidden"><CiMenuBurger/></button>{/*mobile button*/}
+
+          {/*below the mobile nav */}
+          <div hidden={isOpen== false} className="flex flex-col flex-wrap text-xl xs:hidden">
+        <Link to="/" className="block hover:text-color4">
+          Home
+        </Link>
+        <Link to="/products" className="block hover:text-color4">
+          Products
+        </Link>
+        <Link to="/about" className="block hover:text-color4">
+          About Us
+        </Link>
+
+        <Link to="/signup" className="block hover:text-color4">
+          Create Account
+        </Link>
+      </div>
+      {/*above the mobile nav*/}
         </div>
       </div>
-
       <hr />
       {/* Buttom navbar */}
-      <div className="flex justify-around gap-3 p-6 pt-0 pb-2 text-xl ss:text-1xl">
+      <div className="xs:flex xs:justify-around xs:gap-3 xs:p-6 xs:pt-0 xs:pb-2 xs:text-xl ss:text-1xl">
         <Link to="/" className="hover:text-color4">
           Home
         </Link>
@@ -56,6 +83,8 @@ function Navbar() {
         </Link>
       </div>
     </nav>
+    
+    </div>
   );
 }
 

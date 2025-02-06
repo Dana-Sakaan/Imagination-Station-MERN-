@@ -36,7 +36,7 @@ const signUp = async (req, res, next) => {
     });
     const token = signToken(newUser._id);
     res
-      .cookie("jwtAccess", token, { httpOnly: true, secure:true }, maxAge)
+      .cookie("jwtAccess", token, { httpOnly: true, secure:true , sameSite: "None"}, maxAge)
       .status(200)
       .json({ success: true, message: "User Created", newUser });
   } catch (error) {
@@ -60,7 +60,7 @@ const signIn = async (req, res, next) => {
 
     const token = signToken(validUser._id);
     res
-      .cookie("jwtAccess", token, { httpOnly: true, secure:true }, maxAge)
+      .cookie("jwtAccess", token, { httpOnly: true, secure:true, sameSite: "None" }, maxAge)
       .status(200)
       .json({ success: true, message: "User logged in", validUser });
   } catch (error) {
@@ -86,7 +86,7 @@ const google = async (req, res, next) => {
 
       const token = signToken(user._id);
       res
-        .cookie("jwtAccess", token, { httpOnly: true, secure:true }, maxAge)
+        .cookie("jwtAccess", token, { httpOnly: true, secure:true, sameSite: "None" }, maxAge)
         .status(200)
         .json({ success: true, message: "User logged in", user });
     } else {
@@ -100,7 +100,7 @@ const google = async (req, res, next) => {
       });
       const token = signToken(user._id);
       res
-        .cookie("jwtAccess", token, { httpOnly: true, secure:true }, maxAge)
+        .cookie("jwtAccess", token, { httpOnly: true, secure:true, sameSite: "None" }, maxAge)
         .status(200)
         .json({ success: true, message: "User Created", user });
     }
