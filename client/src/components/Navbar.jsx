@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../images/logo.jpeg";
-import { FaShoppingCart, FaUser, FaHeart, FaSearch } from "react-icons/fa";
-import { CiMenuBurger } from "react-icons/ci";
+import { FaShoppingCart, FaUser, FaHeart, FaSearch,  } from "react-icons/fa";
+import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 
 function Navbar() {
@@ -9,6 +9,7 @@ function Navbar() {
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
+    console.log(isOpen)
   };
 
   return (
@@ -45,17 +46,17 @@ function Navbar() {
               <FaUser className="hover:text-color4" />
             </Link>
             <button onClick={toggleNav} className="xs:hidden">
-              <CiMenuBurger />
+              <IoMenu className="hover:text-color4 text-xl"/>
             </button>
             {/*mobile button*/}
           </div>
-        </div>{" "}
+        </div>
         {/*mobile nav */}
         <div
           className={`${
             isOpen
-              ? "flex flex-col flex-wrap text-xl xs:hidden"
-              : "none xs:hidden"
+              ? "flex flex-col flex-wrap text-1xl text-center xs:hidden"
+              : "hidden xs:hidden"
           }`}
         >
           <Link to="/" className="block hover:text-color4">
