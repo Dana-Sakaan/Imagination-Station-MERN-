@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../images/logo.jpeg";
-import { FaShoppingCart, FaUser, FaHeart, FaSearch,  } from "react-icons/fa";
-import { IoMenu } from "react-icons/io5";
+import { FaShoppingCart, FaUser, FaHeart, FaSearch, FaBars  } from "react-icons/fa";
 import { useState } from "react";
 
 function Navbar() {
@@ -46,7 +45,7 @@ function Navbar() {
               <FaUser className="hover:text-color4" />
             </Link>
             <button onClick={toggleNav} className="xs:hidden">
-              <IoMenu className="hover:text-color4 text-xl"/>
+              <FaBars className="hover:text-color4 text-xl"/>
             </button>
             {/*mobile button*/}
           </div>
