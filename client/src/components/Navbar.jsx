@@ -48,35 +48,34 @@ function Navbar() {
               <CiMenuBurger />
             </button>
             {/*mobile button*/}
-
-            {/*mobile nav */}
-            <div
-              className={`${
-                isOpen
-                  ? "flex flex-col flex-wrap text-xl xs:hidden"
-                  : "none xs:hidden"
-              }`}
-            >
-              <Link to="/" className="block hover:text-color4">
-                Home
-              </Link>
-              <Link to="/products" className="block hover:text-color4">
-                Products
-              </Link>
-              <Link to="/about" className="block hover:text-color4">
-                About Us
-              </Link>
-
-              <Link to="/signup" className="block hover:text-color4">
-                Create Account
-              </Link>
-            </div>
-            {/*mobile nav*/}
           </div>
+          {/*mobile nav */}
+          <div
+            className={`${
+              isOpen
+                ? "flex flex-col flex-wrap text-xl xs:hidden"
+                : "none xs:hidden"
+            }`}
+          >
+            <Link to="/" className="block hover:text-color4">
+              Home
+            </Link>
+            <Link to="/products" className="block hover:text-color4">
+              Products
+            </Link>
+            <Link to="/about" className="block hover:text-color4">
+              About Us
+            </Link>
+
+            <Link to="/signup" className="block hover:text-color4">
+              Create Account
+            </Link>
+          </div>
+          {/*mobile nav*/}
         </div>
         <hr />
 
-        {/* Buttom navbar */}
+        {/* Buttom navbar (large screens) */}
         <div className="hidden xs:flex xs:justify-around xs:gap-3 xs:p-6 xs:pt-0 xs:pb-2 xs:text-xl ss:text-1xl">
           <Link to="/" className="hover:text-color4">
             Home
