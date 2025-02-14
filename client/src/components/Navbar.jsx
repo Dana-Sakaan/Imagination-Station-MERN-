@@ -54,7 +54,7 @@ function Navbar() {
         <div
           className={`${
             isOpen
-              ? "flex flex-col flex-wrap text-1xl text-center xs:hidden"
+              ? "flex flex-col flex-wrap text-1xl pt-2 text-center xs:hidden"
               : "hidden xs:hidden"
           }`}
         >
