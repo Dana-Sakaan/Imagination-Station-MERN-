@@ -125,7 +125,7 @@ function Profile() {
   
   const getOrderHistory = async () => {
     try {
-      const res = axios.get(
+      const res = await axios.get(
         `https://imagination-station-be.onrender.com/api/user/orderHistory/${currentUser._id}`,
         { withCredentials: true }
       );
