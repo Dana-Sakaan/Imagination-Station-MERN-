@@ -31,7 +31,7 @@ function Footer() {
   }
 
   return (
-    <footer className='bg-color1 mb-0 text-color2 flex flex-col items-center sm:flex sm:flex-row sm:justify-around'>
+    <footer className='bg-color1 mb-0 mt-10 text-color2 flex flex-col items-center sm:flex sm:flex-row sm:justify-around'>
       <div className="mb-5 mt-10 sm:mb-10">
         <h2 className="text-1xl ">Imagination Station</h2>
         <p className="text-xl text-color4">The world of joy!</p>

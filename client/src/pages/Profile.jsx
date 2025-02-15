@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 function Profile() {
   const [updateButton, setUpdateButton] = useState(false);
   const [userData, setUserData] = useState({});
+  const [orderHistory, setOrderHistory]= useState([])
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -121,6 +122,23 @@ function Profile() {
     }
   };
 
+  
+  const getOrderHistory = async () => {
+    try {
+      const res = axios.get(
+        `https://imagination-station-be.onrender.com/api/user/orderHistory/${currentUser._id}`,
+        { withCredentials: true }
+      );
+      setOrderHistory(res.data.userOrders)
+    } catch (error) {
+      dispatch(actionFailure(error.response.data.message));
+      console.log(error)
+    }
+  };
+useEffect(()=>{
+    getOrderHistory()
+  }, [])
+
   return (
     <section className="text-color3">
       <button
@@ -220,32 +238,17 @@ function Profile() {
           <h3 className="text-xl font-bold ml-[40px]">
             Order History
           </h3>
-
-          <div className="xs:flex gap-10 mt-5 ml-14 ss:ml-0">
-            <img src={img} alt="" className="w-[88px]" />
-            <div>
-              <p className="text-lg font-semibold">Price: 20$</p>
-              <p className="text-lg font-semibold">Ordered at: 10/11/2024</p>
-              <p className="text-lg font-semibold">Delivered at: 15/11/2024</p>
-            </div>
-          </div>
-
-          {/* <div className="xs:flex gap-10 mt-5 ml-14 ss:ml-0">
-            <img src={img} alt="" className="w-[88px]"/>
-            <div>
-              <p className="text-lg font-semibold">Price: 20$</p>
-              <p className="text-lg font-semibold">Ordered at: 10/11/2024</p>
-              <p className="text-lg font-semibold">Delivered at: 15/11/2024</p>
-            </div>
-          </div>
-          <div className="xs:flex gap-10 mt-5 ml-14 ss:ml-0">
-            <img src={img} alt="" className="w-[88px]"/>
-            <div>
-              <p className="text-lg font-semibold">Price: 20$</p>
-              <p className="text-lg font-semibold">Ordered at: 10/11/2024</p>
-              <p className="text-lg font-semibold">Delivered at: 15/11/2024</p>
-            </div>
-          </div> */}
+        {orderHistory.length == 0 ? <p className="mt-5 ml-14 ss:ml-0">No orders yet</p> : orderHistory.map((order)=>(
+           <div className="xs:flex gap-10 mt-5 ml-14 ss:ml-0">
+           <img src={img} alt="" className="w-[88px]" />
+           <div>
+             <p className="text-lg font-semibold">{order.orderTotal}</p>
+             <p className="text-lg font-semibold">Ordered at: {order.createdAt}</p>
+             <p className="text-lg font-semibold">Delivered at:{order.updatedAt}</p>
+           </div>
+         </div>
+        ))}
+         
         </div>
       </div>
       <div className=" flex justify-around mt-3 ml-[8%] ">

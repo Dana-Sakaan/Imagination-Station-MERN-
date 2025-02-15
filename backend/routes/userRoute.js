@@ -1,9 +1,10 @@
 const express = require("express")
 const { isAuth, isAdmin } = require("../middleware/authMiddleware")
-const { getProfile, updateProfile, deleteProfile, userMessage, addToWishlist, pointsDiscount,getMessages,messageStatus } = require("../controllers/userCont")
+const { getProfile, updateProfile, deleteProfile, userMessage, addToWishlist, pointsDiscount,getMessages,messageStatus,orderHistory } = require("../controllers/userCont")
 const router = express.Router()
 
 router.get("/profile/:id", isAuth, getProfile)
+router.get("/orderHistory/:id", isAuth,orderHistory)
 router.patch('/updateprofile/:id', isAuth,updateProfile)
 router.delete('/deleteprofile/:id' , isAuth, deleteProfile)
 router.post('/wishlist/:id', isAuth , addToWishlist)

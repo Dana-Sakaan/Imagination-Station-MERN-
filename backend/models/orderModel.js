@@ -1,8 +1,3 @@
-//here will be edited when finishing the products and payment sections
-
-
-
-
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 

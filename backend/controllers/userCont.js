@@ -1,5 +1,6 @@
 const User = require('../models/UserModel.js')
-const Message = require('../models/messageModel.js')
+const Message = require('../models/messageModel.js');
+const Order = require('../models/orderModel.js');
 
 const getProfile = async (req,res, next)=>{
 
@@ -17,6 +18,24 @@ const getProfile = async (req,res, next)=>{
       res.status(200).json({success: true, message: "your Account", user})
    } catch (error) {
      next(error)
+   }
+}
+
+const orderHistory = async (req,res,next)=>{
+   try {
+
+      if (req.user._id != req.params.id){
+         return res.status(403).json({success: false, message: "your not the owner of this profile"})
+      }
+
+      const user = await User.findById(req.params.id);
+      if(!user){
+         return res.status(404).json({success: false, message: "NO Account"})
+      }
+      const userOrders = await Order.find({email: user.email})
+      res.status(200).json({success:true, message:"users orders" , userOrders})
+   } catch (error) {
+      next(error)
    }
 }
 
@@ -118,4 +137,4 @@ const messageStatus = async (req,res,next)=>{
    }
 }
 
-module.exports = {getProfile , updateProfile, userMessage, messageStatus,getMessages,deleteProfile,addToWishlist, pointsDiscount}
+module.exports = {getProfile , updateProfile, userMessage, messageStatus,getMessages,deleteProfile,addToWishlist, pointsDiscount,orderHistory}

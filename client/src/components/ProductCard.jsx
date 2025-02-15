@@ -19,7 +19,7 @@ function ProductCard({ product }) {
   }
 
   return (
-    <div className="h-96 rounded-md ml-[5%] w-[90%] bg-gray-100 ss:ml-[3%] md:ml-[2%] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] mb-3">
+    <div className="rounded-md ml-[5%] w-[90%] bg-gray-100 ss:ml-[3%] md:ml-[2%] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] mb-3">
       <button type="button" onClick={()=>{addToWishList(product)}}>
         <FaHeart className="text-color1 text-2xl ml-5 mt-2 hover:scale-110 cursor-pointer" />
       </button>

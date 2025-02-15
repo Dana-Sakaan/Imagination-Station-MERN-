@@ -34,7 +34,7 @@ function Navbar() {
               <FaSearch />
             </button>
           </div>
-          <div className=" flex gap-3 text-xl pt-2 xs:pt-3 xs:text-1xl xs:gap-5 md:text-2xl">
+          <div className=" flex items-center gap-3 text-xl pt-2 xs:pt-3 xs:text-1xl xs:gap-5 md:text-2xl">
             <Link to="/cart">
               <FaShoppingCart className="hover:text-color4" />
             </Link>
@@ -54,7 +54,7 @@ function Navbar() {
         <div
           className={`${
             isOpen
-              ? "flex flex-col flex-wrap text-1xl pt-2 text-center xs:hidden"
+              ? "flex flex-col flex-wrap text-1xl text-center xs:hidden"
               : "hidden xs:hidden"
           }`}
         >
