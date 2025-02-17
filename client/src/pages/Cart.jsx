@@ -15,6 +15,7 @@ function Cart() {
   const dispatch = useDispatch()
   const [qty , setQty] = useState(0) //will help to rerender the cart component only
   const [error , setError] = useState(false)
+  const [discountApplied, setDiscountApplied] = useState(false)
   
 
   const handleChange = (e) => {
@@ -50,7 +51,8 @@ function Cart() {
           }).then((result) => {
             if (result.isConfirmed) {
               const res = axios.put(`https://imagination-station-be.onrender.com/api/user/pointsdiscount/${currentUser._id}`, {},{withCredentials: true})
-              setDiscountTotal(prev => prev-1);
+              setDiscountTotal(orderTotal -2);
+              setDiscountApplied(true)
               console.log(discountTotal)
               Swal.fire({
                 title: "Discount applied!",
@@ -203,7 +205,7 @@ function Cart() {
           <p className="text-xl font-semibold mb-1">Shipping Price: {shippingPrice} </p>
           <p className="text-xl font-semibold mb-1">Total: {orderTotal}  </p>
 
-          {discountTotal<orderTotal && <p className="text-xl font-semibold mb-1">Total after discount: {discountTotal}  </p>}
+          {discountApplied && <p className="text-xl font-semibold mb-1">Total after discount: {discountTotal}  </p>}
         </div>
       </div>
 

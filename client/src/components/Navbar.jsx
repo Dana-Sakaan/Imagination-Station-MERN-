@@ -1,36 +1,43 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/logo.jpeg";
-import { FaShoppingCart, FaUser, FaHeart, FaSearch, FaBars  } from "react-icons/fa";
+import {
+  FaShoppingCart,
+  FaUser,
+  FaHeart,
+  FaSearch,
+  FaBars,
+} from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 function Navbar() {
-  const [searchTerm, setSearchTerm]= useState('')
+  const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  let cartLength = useSelector((state) => state.cart.cartItems.length);
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen)
+    console.log(isOpen);
   };
 
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (e)=>{
-      e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("searchTerm", searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/products?${searchQuery}`);
+  };
 
-      const urlParams = new URLSearchParams(window.location.search)
-      urlParams.set('searchTerm', searchTerm);
-      const searchQuery = urlParams.toString();
-      navigate(`/products?${searchQuery}`)
-  }
-
-  useEffect(()=>{
-    const urlParams = new URLSearchParams(window.location.search)
-    const searchTermFromUrl = urlParams.get('SearchTerm')
-    if(searchTermFromUrl){
-      setSearchTerm(searchTermFromUrl)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTermFromUrl = urlParams.get("SearchTerm");
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
     }
-  }, [location.search])
+  }, [location.search]);
 
   return (
     <div>
@@ -45,21 +52,30 @@ function Navbar() {
               </p>
             </Link>
           </div>
-          <form onSubmit={handleSubmit} className="hidden ss:flex ss:justify-center ss:w-[50%] ss:gap-1">
+          <form
+            onSubmit={handleSubmit}
+            className="hidden ss:flex ss:justify-center ss:w-[50%] ss:gap-1"
+          >
             <input
               className=" w-[70%] text-black rounded-lg p-1"
               type="text"
               placeholder="Search..."
-              value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}}
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
             />
             <button className="text-xl">
               <FaSearch />
             </button>
           </form>
           <div className=" flex items-center gap-3 text-xl pt-2 xs:pt-3 xs:text-1xl xs:gap-5 md:text-2xl">
-            <Link to="/cart">
-              <FaShoppingCart className="hover:text-color4" />
-            </Link>
+            <div class="flex items-center">
+              <span class="text-sm text-color4 ">{cartLength}</span>
+              <Link to="/cart">
+                <FaShoppingCart className="hover:text-color4" />
+              </Link>
+            </div>
             <Link to="/wishlist">
               <FaHeart className="hover:text-color4" />
             </Link>
@@ -67,7 +83,7 @@ function Navbar() {
               <FaUser className="hover:text-color4" />
             </Link>
             <button onClick={toggleNav} className="xs:hidden">
-              <FaBars className="hover:text-color4 text-xl"/>
+              <FaBars className="hover:text-color4 text-xl" />
             </button>
             {/*mobile button*/}
           </div>

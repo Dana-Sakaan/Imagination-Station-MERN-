@@ -2,6 +2,7 @@ import { FaHeart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist } from "../redux/wishlistSlice";
+import { addToCart } from "../redux/cartSlice";
 ;
 
 function ProductCard({ product }) {
@@ -17,6 +18,12 @@ function ProductCard({ product }) {
         dispatch(addToWishlist(item))
     }
   }
+
+   const addToCartHandler = ()=>{
+      dispatch(addToCart({quantity: 1, product}))
+      console.log("here")
+    }
+  
 
   return (
     <div className="rounded-md ml-[5%] w-[90%] bg-gray-100 ss:ml-[3%] md:ml-[2%] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] mb-3">
@@ -44,6 +51,7 @@ function ProductCard({ product }) {
         <button
           className="bg-color1 text-color2 mb-2 p-1 text-1xl rounded-md "
           disabled={(product.quantityInStock == 0)}
+          onClick={addToCartHandler}
         >
           {(product.quantityInStock == 0 ? "Out Of Stock" : "Add To Cart")}
         </button>

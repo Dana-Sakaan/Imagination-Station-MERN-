@@ -255,8 +255,8 @@ useEffect(()=>{
               </div>
             ))
           )}
-          {orderHistory.length > 3 && (
             <button
+              disabled= {orderHistory.length<3}
               type="button"
               className="text-color3 text-lg mt-5 ml-14 ss:ml-0"
               onClick={() => {
@@ -265,7 +265,6 @@ useEffect(()=>{
             >
               Show More
             </button>
-          )}
         </div>
       </div>
       <div className=" flex justify-around mt-3 ml-[8%] ">
