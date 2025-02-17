@@ -15,6 +15,7 @@ function Profile() {
   const [updateButton, setUpdateButton] = useState(false);
   const [userData, setUserData] = useState({});
   const [orderHistory, setOrderHistory]= useState([])
+  const [showMoreProducts, setShowMoreProducts]= useState(1)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -122,11 +123,11 @@ function Profile() {
     }
   };
 
-  
+  const ordersPage = new URLSearchParams(showMoreProducts).toString()
   const getOrderHistory = async () => {
     try {
       const res = await axios.get(
-        `https://imagination-station-be.onrender.com/api/user/orderHistory/${currentUser._id}`,
+        `https://imagination-station-be.onrender.com/api/user/orderHistory/${currentUser._id}?${ordersPage}`,
         { withCredentials: true }
       );
       setOrderHistory(res.data.userOrders)
@@ -152,9 +153,7 @@ useEffect(()=>{
         <Link to="/dashboard">Admin Dashboard</Link>
       </button>
       <h2 className="text-2xl font-bold pt-3 text-center">Profile Page</h2>
-      <p className="text-lg text-center">
-        Fill your information here
-      </p>
+      <p className="text-lg text-center">Fill your information here</p>
       <p className="p-1 text-center ss:text-end text-lg text-color4 mr-10">
         Points: {currentUser.points}
       </p>
@@ -235,20 +234,38 @@ useEffect(()=>{
         </form>
 
         <div className="border-b-2 border-b-color1 ss:border-b-0 ss:ml-[24px] mt-[32px] ss:mt-0">
-          <h3 className="text-xl font-bold ml-[40px]">
-            Order History
-          </h3>
-        {orderHistory.length == 0 ? <p className="mt-5 ml-14 ss:ml-0">No orders yet</p> : orderHistory.map((order)=>(
-           <div className="xs:flex gap-10 mt-5 ml-14 ss:ml-0">
-           <img src={img} alt="" className="w-[88px]" />
-           <div>
-             <p className="text-lg font-semibold">{order.orderTotal}</p>
-             <p className="text-lg font-semibold">Ordered at: {order.createdAt}</p>
-             <p className="text-lg font-semibold">Delivered at:{order.updatedAt}</p>
-           </div>
-         </div>
-        ))}
-         
+          <h3 className="text-xl font-bold ml-[40px]">Order History</h3>
+          {orderHistory.length == 0 ? (
+            <p className="text-color3 text-lg mt-5 ml-14 ss:ml-0">
+              No orders yet
+            </p>
+          ) : (
+            orderHistory.map((order) => (
+              <div className="xs:flex gap-10 mt-5 ml-14 ss:ml-0">
+                <img src={img} alt="" className="w-[88px]" />
+                <div>
+                  <p className="text-lg font-semibold">{order.orderTotal}</p>
+                  <p className="text-lg font-semibold">
+                    Ordered at: {order.createdAt}
+                  </p>
+                  <p className="text-lg font-semibold">
+                    Delivered at:{order.updatedAt}
+                  </p>
+                </div>
+              </div>
+            ))
+          )}
+          {orderHistory.length > 3 && (
+            <button
+              type="button"
+              className="text-color3 text-lg mt-5 ml-14 ss:ml-0"
+              onClick={() => {
+                setShowMoreProducts((prevState) => prevState + 1);
+              }}
+            >
+              Show More
+            </button>
+          )}
         </div>
       </div>
       <div className=" flex justify-around mt-3 ml-[8%] ">

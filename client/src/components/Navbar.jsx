@@ -1,15 +1,28 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/logo.jpeg";
 import { FaShoppingCart, FaUser, FaHeart, FaSearch, FaBars  } from "react-icons/fa";
 import { useState } from "react";
 
 function Navbar() {
+  const [searchTerm, setSearchTerm]= useState('')
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
     console.log(isOpen)
   };
+
+
+  const navigate = useNavigate()
+
+  const handleSubmit = (e)=>{
+      e.preventDefault();
+
+      const urlParams = new URLSearchParams(window.location.search)
+      urlParams.set('searchTerm', searchTerm);
+      const searchQuery = urlParams.toString();
+      navigate(`/search?${searchQuery}`)
+  }
 
   return (
     <div>
@@ -24,16 +37,17 @@ function Navbar() {
               </p>
             </Link>
           </div>
-          <div className="hidden ss:flex ss:justify-center ss:w-[50%] ss:gap-1">
+          <form onSubmit={handleSubmit} className="hidden ss:flex ss:justify-center ss:w-[50%] ss:gap-1">
             <input
               className=" w-[70%] text-black rounded-lg p-1"
               type="text"
               placeholder="Search..."
+              value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}}
             />
             <button className="text-xl">
               <FaSearch />
             </button>
-          </div>
+          </form>
           <div className=" flex items-center gap-3 text-xl pt-2 xs:pt-3 xs:text-1xl xs:gap-5 md:text-2xl">
             <Link to="/cart">
               <FaShoppingCart className="hover:text-color4" />

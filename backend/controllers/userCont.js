@@ -23,7 +23,7 @@ const getProfile = async (req,res, next)=>{
 
 const orderHistory = async (req,res,next)=>{
    try {
-
+      const page = parseInt(req.query.ordersPage) - 1
       if (req.user._id != req.params.id){
          return res.status(403).json({success: false, message: "your not the owner of this profile"})
       }
@@ -32,7 +32,7 @@ const orderHistory = async (req,res,next)=>{
       if(!user){
          return res.status(404).json({success: false, message: "NO Account"})
       }
-      const userOrders = await Order.find({email: user.email})
+      const userOrders = await Order.find({email: user.email}).limit(3).skip(page*3)
       res.status(200).json({success:true, message:"users orders" , userOrders})
    } catch (error) {
       next(error)
