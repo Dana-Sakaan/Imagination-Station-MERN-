@@ -16,7 +16,7 @@ function Hero() {
             Discover the world of joy at our charming toy shop!
           </p>
 
-          <Link to='/search'>
+          <Link to='/products'>
           <button className=" mb-2 text-lg bg-color4 mt-2 text-color3 pr-4 pl-4 pt-2 pb-2  rounded-lg text-center ">
             Shop Now
           </button>

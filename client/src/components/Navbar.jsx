@@ -21,8 +21,16 @@ function Navbar() {
       const urlParams = new URLSearchParams(window.location.search)
       urlParams.set('searchTerm', searchTerm);
       const searchQuery = urlParams.toString();
-      navigate(`/search?${searchQuery}`)
+      navigate(`/products?${searchQuery}`)
   }
+
+  useEffect(()=>{
+    const urlParams = new URLSearchParams(window.location.search)
+    const searchTermFromUrl = urlParams.get('SearchTerm')
+    if(searchTermFromUrl){
+      setSearchTerm(searchTermFromUrl)
+    }
+  }, [location.search])
 
   return (
     <div>

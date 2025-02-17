@@ -33,7 +33,6 @@ function App() {
         <Route path="/about" element={<About/>}/>
         <Route path= "/signup" element={<Signup/>}/>
         <Route path= "/signin" element={<Signin/>}/>
-        <Route path="/search" element={<Search/>}/>
         <Route path="/product-details/:productId" element={<ProductDetails/>}/>
 
         <Route element={<ProtectedRoute/>}>
