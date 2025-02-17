@@ -71,7 +71,7 @@ function Navbar() {
           </form>
           <div className=" flex items-center gap-3 text-xl pt-2 xs:pt-3 xs:text-1xl xs:gap-5 md:text-2xl">
             <div class="flex items-center">
-              <span class="text-sm text-color4 ">{cartLength}</span>
+              <span class="text-base text-color4 ">{cartLength}</span>
               <Link to="/cart">
                 <FaShoppingCart className="hover:text-color4" />
               </Link>
