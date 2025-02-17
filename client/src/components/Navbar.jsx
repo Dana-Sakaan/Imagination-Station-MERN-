@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/logo.jpeg";
 import { FaShoppingCart, FaUser, FaHeart, FaSearch, FaBars  } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Navbar() {
   const [searchTerm, setSearchTerm]= useState('')
